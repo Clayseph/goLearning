@@ -75,6 +75,6 @@ func parseAndPrintCSV(filePath string) {
 }
 
 func main() {
-	// callLocalHost()
+	callLocalHost()
 	parseAndPrintCSV("./example.csv")
 }
