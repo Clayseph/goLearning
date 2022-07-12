@@ -16,6 +16,7 @@ type Animal struct {
 	Type string `json: "type"`
 }
 
+// Calls web-service gin that runs on localhost:8080
 func callLocalHost() {
 	n := 100
 
@@ -40,6 +41,7 @@ func structureAnimalData(records [][]string) {
 	var animal Animal
 	var animals []Animal
 
+	// _ is a blank identifier for unused variables
 	for _, record := range records {
 		animal.ID = record[0]
 		animal.Name = record[1]
@@ -57,13 +59,13 @@ func structureAnimalData(records [][]string) {
 }
 
 func parseAndPrintCSV(filePath string) {
-	f, err := os.Open(filePath)
+	file, err := os.Open(filePath)
 	if err != nil {
 		log.Fatal("Unable to read file")
 	}
-	defer f.Close()
+	defer file.Close()
 
-	csvReader := csv.NewReader(f)
+	csvReader := csv.NewReader(file)
 	csvReader.Comma = '|'
 	record, err := csvReader.ReadAll()
 	if err != nil {
